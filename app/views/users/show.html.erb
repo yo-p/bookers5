@@ -1,0 +1,9 @@
+<h1>User Show</h1>
+<p id="notice">
+  <%= notice %>
+</p>
+
+<div class="field"><%= @user.name %></div>
+<div class="field"><%= @user.introduction %></div>
+
+<h3><%= link_to 'edit', edit_user_path(current_user) %></h3>
