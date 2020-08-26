@@ -2,7 +2,7 @@
 <p id="notice">
   <%= notice %>
 </p>
-
+<div class="field"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg' %></div>
 <div class="field"><%= @user.name %></div>
 <div class="field"><%= @user.introduction %></div>
 
