@@ -7,3 +7,17 @@
 <div class="field"><%= @user.introduction %></div>
 
 <h3><%= link_to 'edit', edit_user_path(current_user) %></h3>
+
+<%= form_with model: @book do |f| %>
+  <div class="field">
+    <%= f.label :titel %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
