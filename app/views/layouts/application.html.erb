@@ -13,6 +13,7 @@
   <% if user_signed_in? %>
     <%= link_to "Home", user_path(current_user) %>
     <%= link_to "Users", users_path %>
+    <%= link_to "Books", books_path %>
     <%= link_to "log out", destroy_user_session_path, method: :delete %>
     <p><%= current_user.name %></p>
   <% else %>
