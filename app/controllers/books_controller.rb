@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :correct_book, only: [ :edit, :update, :destroy ]
+
   def new
   end
 
@@ -8,7 +10,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: "You have creatad book successfully."
     else 
-      @books =Book.all
+      @books = Book.all
       render "index"
     end
   end
@@ -46,5 +48,12 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit( :title, :body )
+  end
+
+  def correct_book
+    @book = current_user.books.find_by(id: params[:id])
+    unless @book
+      redirect_to books_path
+    end
   end
 end
