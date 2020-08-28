@@ -6,7 +6,11 @@
 <div class="field"><%= @user.name %></div>
 <div class="field"><%= @user.introduction %></div>
 
-<h3><%= link_to 'edit', edit_user_path(current_user) %></h3>
+<% if current_user.id == @user.id %>
+  <h3><%= link_to 'edit', edit_user_path(@user) %></h3>
+<% else %>
+  <h3><%= link_to 'edit', user_path(current_user) %></h3>
+<% end %>
 
 <%= form_with model: @book, local: true do |f| %>
   <div class="field">
