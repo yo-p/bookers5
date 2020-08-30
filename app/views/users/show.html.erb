@@ -1,39 +1,12 @@
 <p id="notice">
   <%= notice %>
 </p>
+
 <div class="row">
   <div class="col-lg-3">
-    <table class="table">
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg' %></td>
-      <tr>
-        <th>name</th>
-        <td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <td><%= @user.introduction %></td>
-      </tr>
-    </table>
-    
-      <% if current_user.id == @user.id %>
-        <h3><%= link_to 'edit', edit_user_path(@user) %></h3>
-      <% else %>
-        <h3><%= link_to 'edit', user_path(current_user) %></h3>
-      <% end %>
-      <%= form_with model: @book, local: true do |f| %>
-      <div class="field">
-        <%= f.label :titel %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label :body %>
-        <%= f.text_area :body %>
-      </div>
-      <div>
-        <%= f.submit %>
-      </div>
-    <% end %>
+    <%= render partial: "books/form", locals: { book: @book, user: @user} %>
   </div>
+
   <div class="col-lg-9">
     <h1>Books</h1>
     <table>

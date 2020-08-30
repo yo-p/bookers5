@@ -1,16 +1,24 @@
-<h1>Book detail</h1>
 <p id="notice">
   <%= notice %>
 </p>
 
-<table>
-  <tr>
-    <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
-    <td><%= link_to @book.title, book_path(@book) %></td>
-    <td><%= @book.body %></td>
-    <% if user_signed_in? && current_user.id == @book.user_id %>
-      <td><%= link_to 'Edit', edit_book_path(@book) %></td>
-      <td><%= link_to 'Delete', book_path(@book.id), method: :delete %></td>
-    <% end %>
-  </tr>
-</table>
+<div class="row">
+  <div class="col-lg-3">
+    <%= render partial: "form", locals: { book: @new_book } %>
+  </div>
+
+<div class="col-lg-9">
+  <h1>Book detail</h1>
+  <table>
+    <tr>
+      <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
+      <td><%= link_to @book.title, book_path(@book) %></td>
+      <td><%= @book.body %></td>
+      <% if user_signed_in? && current_user.id == @book.user_id %>
+        <td><%= link_to 'Edit', edit_book_path(@book) %></td>
+        <td><%= link_to 'Delete', book_path(@book.id), method: :delete %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
+
