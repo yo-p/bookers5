@@ -122,6 +122,7 @@ describe 'ユーザーのテスト' do
         fill_in 'user[name]', with: ''
         click_button 'Update User'
         expect(page).to have_content 'error'
+				#もう少し詳細にエラー文出したい
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
     end
