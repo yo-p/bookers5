@@ -11,7 +11,7 @@ describe 'トップページのテスト' do
         expect(page).to have_link 'Log in', href: new_user_session_path
       end
       it 'Sign Upリンクが表示される' do
-        expect(page).to have_link 'Sign up', href: new_user_registration_path
+        expect(page).to have_link 'Sign Up', href: new_user_registration_path
       end
     end
 
@@ -44,7 +44,7 @@ describe 'トップページのテスト' do
         expect(current_path).to eq(new_user_session_path)
       end
       it 'Sign Upリンクをクリックしたら新規登録画面に遷移する' do
-        click_link 'Sign up'
+        click_link 'Sign Up'
         expect(current_path).to eq(new_user_registration_path)
       end
     end

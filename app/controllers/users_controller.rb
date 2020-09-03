@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def destroy
+    flash[:notice] = "Signed out successfully." 
+  end
+
   private
 
   def user_params
