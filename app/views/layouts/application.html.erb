@@ -10,21 +10,26 @@
   </head>
 
   <body>
-  <h1>Bookers</h1>
-  <% if user_signed_in? %>
-    <%= link_to "Home", user_path(current_user) %>
-    <%= link_to "Users", users_path %>
-    <%= link_to "Books", books_path %>
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
-    <p><%= current_user.name %></p>
-  <% else %>
-    <%= link_to 'home', root_path %>
-    <%= link_to 'about', home_about_path %>
-    <%= link_to "sign up", new_user_registration_path %>
-    <%= link_to "login", new_user_session_path %>
-  <% end %>
-  <div class="container">
-    <%= yield %>
-  </div>
+    <header>
+      <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <span>Bookers</span>
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "home", user_path(current_user), class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "users", users_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "books", books_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "logout", destroy_user_session_path, method: :delete, class:"nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'home', root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'about', home_about_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "login", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
