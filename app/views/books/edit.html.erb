@@ -1,5 +1,3 @@
-<h1>Editing Book</h1>
-
 <% if @book.errors.any? %>
 <p>error</p>
   <div id="error_explanation" class="alert alert-danger">
@@ -11,19 +9,22 @@
   </div>
 <% end %>
 
-<%= form_with model: @book, local: true do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1>Editing Book</h1>
+      <%= form_with model: @book, local: true do |f| %>
+        <div class="field row">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "col-md-12" %>
+        </div>
+        <div class="field row">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "col-md-12" %>
+        </div>
+        <div class="row action"> 
+          <%= f.submit class:"btn btn-primary col-md-12" %>
+        </div>
+      <% end %>
+    <span><%= link_to 'Show', book_path(@book) %></span> | <span><%= link_to 'Back', books_path %></span>
   </div>
-  <div class="filed">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<p><%= link_to 'Show', book_path(@book) %></p>
-<p><%= link_to 'Back', books_path %></p>
+</div>

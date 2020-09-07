@@ -1,4 +1,3 @@
-<h1>User info</h1>
 <% if @user.errors.any? %>
 <p>error</p>
   <div id="error_explanation" class="alert alert-danger">
@@ -10,19 +9,24 @@
   </div>
 <% end %>
 
-<%= form_with( model: @user, local: true ) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <h1>User info</h1>
+    <%= form_with( model: @user, local: true ) do |f| %>
+      <div class="field row">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "col-md-12" %>
+      </div>
+      <div class="field row action">
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="field row">
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction, class: "col-md-12" %>
+      </div>
+      <div class="action row">
+        <%= f.submit "Update User", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.attachment_field :profile_image %>
-  </div>
-  <div class="field">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduction %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Update User" %>
-  </div>
-<% end %>
+</div>
