@@ -11,4 +11,10 @@ class User < ApplicationRecord
   attachment :profile_image 
 
   has_many :books, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_book, through: :likes, source: :book
+
+  def already_liked?(book)
+    self.likes.exists?(book_id: book.id)
+  end
 end
