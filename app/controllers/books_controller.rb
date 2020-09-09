@@ -21,6 +21,7 @@ class BooksController < ApplicationController
     @new_book = Book.new
     @book = Book.find(params[:id])
     @user = current_user
+    @like = Like.new
   end
 
   def edit
@@ -40,6 +41,7 @@ class BooksController < ApplicationController
     @user = current_user
     @book = Book.new
     @books = Book.all
+    @like = Like.new
   end
 
   def destroy

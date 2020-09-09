@@ -20,6 +20,7 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +33,14 @@
           </td>
           <td><%= link_to book.title, book_path(book) %></td>
           <td><%= book.body %></td>
+          <td>
+            <% if current_user.already_liked?(book) %>
+              <%= button_to 'Unlike', book_like_path(id: book.id, book_id: book.id), method: :delete %>
+            <% else %>
+              <%= button_to 'Like', book_likes_path(book), method: :post %>
+            <% end %>
+            <%= book.liked_users.count %>
+          </td>
         </tr>
       <% end %>
       </tbody>
