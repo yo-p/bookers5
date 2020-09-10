@@ -21,6 +21,7 @@
           <th>Title</th>
           <th>Opinion</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +42,7 @@
             <% end %>
             <%= book.liked_users.count %>
           </td>
+          <td>コメント数:<%= book.comments.count %></td>
         </tr>
       <% end %>
       </tbody>
