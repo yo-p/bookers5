@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     @new_book = Book.new
     @book = Book.find(params[:id])
     @comment = Comment.new
-    @comments = @book.comments.order(created_at: :desc)
+    @comments = @book.comments
   end
 
   def edit
