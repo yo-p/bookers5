@@ -1,0 +1,6 @@
+<%= form_with model: [book, comment], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control', id: 'content', placeholder: "コメントを記入してください" %>
+  </div>
+  <%= f.submit "Create Comment", class: "btn btn-primary action" %>
+<% end %>
