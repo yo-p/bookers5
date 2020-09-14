@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @comment.book_id = params[:book_id]
     @comment.save
-    redirect_to @comment.book, notice: "You have creatad comment successfully."
+    render :index
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to @comment.book, notice: "You have deleted comment successfully."
+    render :index
   end
 
   private
