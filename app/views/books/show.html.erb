@@ -18,7 +18,7 @@
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success" %></td>
           <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, class: "btn btn-danger" %></td>
         <% end %>
-          <td id="like_btn">
+          <td id="like_btn_<%= @book.id %>">
             <%= render partial: 'likes/like', locals: { book: @book } %>
           </td>
       </tr>

@@ -1,2 +1,1 @@
-$('#like_btn').html("<%= j(render partial: 'likes/like', locals: { book: @book }) %>");
-$('#like_btn_index_<%= @book.id %>').html("<%= j(render partial: 'likes/like', locals: { book: @book }) %>");
+$('#like_btn_<%= @book.id %>').html("<%= j(render partial: 'likes/like', locals: { book: @book }) %>");
