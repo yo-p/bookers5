@@ -15,7 +15,11 @@
 
 
 <div class="row">
-  <%= link_to 'Edit', edit_user_path(current_user), class: "btn btn-warning col-md-12" %>
+  <% if current_user == @user %>
+    <%= link_to 'Edit', edit_user_path(current_user), class: "btn btn-warning col-md-12" %>
+  <% else %>
+    <%= render partial: "users/follow", locals: { user: @user } %>
+  <% end %>
 </div>
 
 <h4>New book</h4>
