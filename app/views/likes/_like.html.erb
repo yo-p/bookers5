@@ -1,7 +1,7 @@
 <% if current_user.already_liked?(book) %>
-  <span><%= link_to 'Unlike', book_like_path(book, book.likes), method: :delete, remote: true %></span>
+  <span><%= link_to 'Unlike', book_like_path(book.id, book.likes), method: :delete, remote: true %></span>
 <% else %>
-  <span><%= link_to 'Like', book_likes_path(book), method: :post, remote: true %></span>
+  <span><%= link_to 'Like', book_likes_path(book.id), method: :post, remote: true %></span>
 <% end %>
 <span><%= book.likes.count %></span>
 
