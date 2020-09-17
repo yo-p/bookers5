@@ -20,7 +20,7 @@
       <tr>
         <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
         <td><%= user.name %></td>
-        <td id="follower_count<%= user.id %>">フォロワー<%= user.followers.count %></td>
+        <td id="follower_count_<%= user.id %>">フォロワー<%= user.followers.count %></td>
         <td id="following_count_<%= user.id %>">フォロー中<%= user.followings.count %></td>
         <td id="follow_btn_<%= user.id %>">
           <%= render partial: "relationships/follow_form", locals: { user: user } %>
