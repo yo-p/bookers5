@@ -1,3 +1,7 @@
+<p id="notice">
+  <%= notice %>
+</p>
+
 <div class="row">
   <div class="col-md-3">
     <%= render partial: "books/form", locals: { book: @book, user: @user } %>
@@ -16,10 +20,10 @@
       <tr>
         <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
         <td><%= user.name %></td>
-        <td>フォロワー<%= user.followers.count %></td>
-        <td>フォロー<%= user.followings.count %></td>
-        <td>
-          <%= render partial: "users/follow", locals: { user: user } %>
+        <td id="follower_count_<%= user.id %>">フォロワー<%= user.followers.count %></td>
+        <td id="following_count_<%= user.id %>">フォロー中<%= user.followings.count %></td>
+        <td id="follow_btn_<%= user.id %>">
+          <%= render partial: "relationships/follow_form", locals: { user: user } %>
         </td>
         <td><%= link_to 'Show', user_path(user) %></td>
       </tr>
