@@ -42,8 +42,10 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.all
+    # @books = Book.all
     @like = Like.new
+    @search = Book.ransack(params[:q])
+    @books = @search.result(distinct: true)
   end
 
   def destroy
