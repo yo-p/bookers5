@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>followings</h1>
+    <table class="table table-hover">
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+      </tr>
+      <% @followers.each do |follower| %>
+      <tr>
+        <td><%= attachment_image_tag follower, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
+        <td><%= follower.name %></td>
+        <td><%= link_to 'Show', user_path(follower) %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -12,16 +12,16 @@
       <tr>
         <th>image</th>
         <th>name</th>
-        <th></th>
-        <th></th>
+        <th>follower</th>
+        <th>follow</th>
         <th></th>
       </tr>
       <% @users.each do |user| %>
       <tr>
         <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: 'no-image-mini.jpg', size: '60x60' %></td>
         <td><%= user.name %></td>
-        <td id="follower_count_<%= user.id %>">フォロワー<%= user.followers.count %></td>
-        <td id="following_count_<%= user.id %>">フォロー中<%= user.followings.count %></td>
+        <td id="follower_count_<%= user.id %>"><%= user.followers.count %></td>
+        <td id="following_count_<%= user.id %>"><%= user.followings.count %></td>
         <td id="follow_btn_<%= user.id %>">
           <%= render partial: "relationships/follow_form", locals: { user: user } %>
         </td>
