@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :relationships, :only => [:create, :destroy]
   root 'home#top'
   get 'home/about'
+  get '/search' => 'search#search'
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
