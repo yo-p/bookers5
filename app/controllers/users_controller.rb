@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @own_user = current_user
     @book = Book.new
     @books = @user.books
   end
@@ -26,8 +25,16 @@ class UsersController < ApplicationController
     @user = current_user
     @book = Book.new
     @users = User.all
-    # @search = User.ransack(params[:q])
-    # @users = @search.result(distinct: true)
+  end
+
+  def followings
+    @user = User.find(params[:user_id])
+    @followings = @user.followings.where.not(id: current_user.id)
+  end
+
+  def followers
+    @user = User.find(params[:user_id])
+    @followers = @user.followers.where.not(id: current_user.id)
   end
 
   def destroy
@@ -37,7 +44,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit( :name, :introduction, :profile_image )
+    params.require(:user).permit( :name, :introduction, :profile_image, :postcode, :prefecture_code,
+                                  :address_city, :address_street, :address_building )
   end
 
   def correct_user
