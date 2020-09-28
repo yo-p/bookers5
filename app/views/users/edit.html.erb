@@ -24,8 +24,28 @@
         <%= f.label :introduction %>
         <%= f.text_area :introduction, class: "col-md-12" %>
       </div>
+      <div class="field row">
+        <%= f.label :postcode %>
+        <%= f.text_field :postcode, autocomplete: 'postcode', class: "col-md-12" %>
+      </div>
+      <div class="field row action">
+        <%= f.label :prefecture_name, '都道府県' %>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {prompt: '選択してください'} %>
+      </div>
+      <div class="field row">
+        <%= f.label :address_city, '市町村' %>
+        <%= f.text_field :address_city, autocomplete: 'address_city', class: "col-md-12" %>
+      </div>
+      <div class="field row">
+        <%= f.label :address_street, '番地' %>
+        <%= f.text_field :address_street, autocomplete: 'address_street', class: "col-md-12" %>
+      </div>
+      <div class="field row">
+        <%= f.label :address_building, '建物' %>
+        <%= f.text_field :address_building, autocomplete: 'address_building', class: "col-md-12" %>
+      </div>
       <div class="action row">
-        <%= f.submit "Update User", class: "btn btn-primary" %>
+        <%= f.submit "Update User", class: "btn btn-primary", class: "col-md-12" %>
       </div>
     <% end %>
   </div>
