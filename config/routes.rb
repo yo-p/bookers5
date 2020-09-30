@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/create'
+  get 'rooms/show'
   devise_for :users
 
   resources :users, :only => [:show, :edit, :update, :index, :destroy] do
