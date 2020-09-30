@@ -2,6 +2,14 @@
   <%= notice %>
 </p>
 
+<% unless @user.id == current_user.id %>
+  <% if (current_user.following? @user) && (@user.following? current_user) %>
+    <% if @isRoom == true %>
+      <p><%= link_to "チャットへ", room_path(@roomId) %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div class="row">
   <div class="col-md-3">
     <%= render partial: "books/form", locals: { book: @book, user: @user} %>
