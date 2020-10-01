@@ -1,2 +1,24 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="row">
+  <div class="col-md-9">
+      <% @entries.each do |e| %>
+        <strong>
+          <%= attachment_image_tag e.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
+          <%= e.user.name %>さん
+        </strong>
+      <% end %>
+
+      <% if @message.present? %>
+        <% @messages.each do |m| %>
+          <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
+          <%= m.message %><br>
+          <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+        <% end %>
+      <% end %>
+
+      <%= form_for @message do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit "投稿" %>
+      <% end %>
+  </div>
+</div>
