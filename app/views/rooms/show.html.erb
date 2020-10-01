@@ -1,24 +1,35 @@
 <div class="row">
-  <div class="col-md-9">
-      <% @entries.each do |e| %>
-        <strong>
-          <%= attachment_image_tag e.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
-          <%= e.user.name %>さん
-        </strong>
+  <div class="col-md-6 offset-md-3">
+    <div>
+    <% @entries.each do |e| %>
+      <strong>
+        <%= attachment_image_tag e.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
+        <%= e.user.name %>さん
+      </strong>
       <% end %>
-
-      <% if @message.present? %>
-        <% @messages.each do |m| %>
-          <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
-          <%= m.message %><br>
-          <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+    </div>
+    <div class="chats">
+      <div class="chat">
+        <% if @message.present? %>
+          <% @messages.each do |m| %>
+            <div class="chat-box">
+              <div class="chat-face">
+                <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
+              </div>
+              <div class="chat-hukidasi"><strong><%= m.message %></strong><br>
+                <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-
+      </div>
+    </div>
+    <div class="posts">
       <%= form_for @message do |f| %>
         <%= f.text_field :message %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit "投稿" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit "投稿", class: 'form-submit' %>
       <% end %>
+    </div>
   </div>
 </div>
