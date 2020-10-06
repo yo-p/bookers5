@@ -1,0 +1,12 @@
+<% if message.present? %>
+  <% messages.each do |m| %>
+    <div class="chat-box">
+      <div class="chat-face">
+        <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, fromat: 'jpeg', fallback: 'no-image-mini.jpg',size: '60x60'%>
+      </div>
+      <div class="chat-hukidasi"><strong><%= m.message %></strong><br>
+        <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
