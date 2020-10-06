@@ -1,0 +1,5 @@
+<%= form_for message do |f| %>
+  <%= f.text_field :message %>
+    <%= f.hidden_field :room_id, value: room.id %>
+  <%= f.submit "投稿", class: 'form-submit' %>
+<% end %>
